@@ -1,10 +1,11 @@
-import { Button } from "./components/ui/button";
+import { RouterProvider } from "react-router";
+import { router } from "./routes/routes";
+
 
 function App() {
   return (
     <>
-      <h1 className="text-6xl font-work bg-primary" >Hello World from vite </h1>
-      <Button variant={'secondary'} >Hello World</Button>
+    <RouterProvider router={router} />
     </>
   );
 }
