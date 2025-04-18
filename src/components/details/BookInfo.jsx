@@ -1,7 +1,11 @@
 import React from "react";
 import { Badge } from "../ui/badge";
+import { Button } from "../ui/button";
+import { useBooks } from "@/context/BooksProvider";
+import { toast } from "sonner";
 
 const BookInfo = ({
+  id,
   bookName,
   author,
   category,
@@ -11,7 +15,10 @@ const BookInfo = ({
   yearOfPublishing,
   rating,
   publisher,
+  image
 }) => {
+  const { setReadBooks, setWishlistBooks } = useBooks();
+
   return (
     <section className="flex flex-col text-dark gap-3 justify-between">
       <h2 className="font-playfair text-3xl font-bold">{bookName}</h2>
@@ -49,6 +56,59 @@ const BookInfo = ({
           <p className="text-dark-light">Rating:</p>
           <p className="font-bold">{rating}</p>
         </div>
+      </div>
+      <div className="flex items-center gap-4">
+        <Button
+          variant={"outline"}
+          className={"border-stroke bg-transparent"}
+          onClick={() => {
+            setReadBooks((prev) => [
+              ...prev,
+              {
+                id,
+                bookName,
+                author,
+                category,
+                review,
+                image,
+                tags,
+                totalPages,
+                yearOfPublishing,
+                rating,
+                publisher,
+              },
+            ]);
+            toast.success('Book has been added to read later!')
+
+          }}
+        >
+          Read
+        </Button>
+        <Button
+          variant="secondary"
+          className="text-white"
+          onClick={() => {
+            setWishlistBooks((prev) => [
+              ...prev,
+              {
+                id,
+                bookName,
+                author,
+                category,
+                image,
+                review,
+                tags,
+                totalPages,
+                yearOfPublishing,
+                rating,
+                publisher,
+              },
+            ]);
+            toast.success('Book has been added to wishlist!')
+          }}
+        >
+          Wishlist
+        </Button>
       </div>
     </section>
   );

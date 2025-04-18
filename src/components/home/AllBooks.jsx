@@ -21,6 +21,7 @@ const AllBooks = () => {
               category={book.category}
               tags={book.tags}
               id={book.bookId}
+              
             />
           ))}
       </div>

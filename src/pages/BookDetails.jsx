@@ -21,7 +21,9 @@ const BookDetails = () => {
     <div className="py-16 grid lg:grid-cols-2 gap-7">
       <BookCover src={singleBook.image} />
       <BookInfo
+        id={singleBook.bookId}
         bookName={singleBook.bookName}
+        image={singleBook.image}
         author={singleBook.author}
         category={singleBook.category}
         review={singleBook.review}
