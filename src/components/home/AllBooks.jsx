@@ -5,7 +5,6 @@ import BooksCard from "./all-books/BooksCard";
 const AllBooks = () => {
   const data = useLoaderData() || [];
 
-  console.log(data);
 
   return (
     <section className="py-10 xs:py-16">
