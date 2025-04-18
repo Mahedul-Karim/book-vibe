@@ -10,6 +10,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+        loader: async () => {
+          const res = await fetch("/data/booksData.json");
+          return res;
+        },
       },
     ],
   },
